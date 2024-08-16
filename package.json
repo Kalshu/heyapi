@@ -1,0 +1,25 @@
+{
+  "name": "heyapi",
+  "version": "1.0.0",
+  "description": "bug on generation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate:http-client": "openapi-ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "heyApiGeneratorBug"
+  },
+  "keywords": [
+    "heyApi"
+  ],
+  "author": "MZKDecourtyeJ",
+  "license": "ISC",
+  "dependencies": {
+    "@hey-api/client-fetch": "^0.2.4"
+  },
+  "devDependencies": {
+    "@hey-api/openapi-ts": "^0.52.8"
+  }
+}

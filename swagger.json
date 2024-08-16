@@ -1,0 +1,467 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Web",
+    "version": "1.0"
+  },
+  "paths": {
+    "/_api/store/articles": {
+      "get": {
+        "tags": ["StoreArticle"],
+        "operationId": "GetAllArticles",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CompanyArticleModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CompanyArticleModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CompanyArticleModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_api/store/articles/{articleId}": {
+      "get": {
+        "tags": ["StoreArticle"],
+        "operationId": "GetArticle",
+        "parameters": [
+          {
+            "name": "articleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompanyArticleModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompanyArticleModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompanyArticleModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_api/company/articles": {
+      "get": {
+        "tags": ["CompanyArticle"],
+        "operationId": "ListAllArticles",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CompanyArticleModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CompanyArticleModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CompanyArticleModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_api/company/articles/{articleId}": {
+      "get": {
+        "tags": ["CompanyArticle"],
+        "operationId": "GetArticle",
+        "parameters": [
+          {
+            "name": "articleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompanyArticleModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompanyArticleModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompanyArticleModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_api/articles": {
+      "get": {
+        "tags": ["PersonalArticle"],
+        "operationId": "ListAllArticles",
+        "parameters": [
+          {
+            "name": "includeWidgets",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PersonalArticleModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PersonalArticleModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PersonalArticleModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_api/articles/{articleId}": {
+      "get": {
+        "tags": ["PersonalArticle"],
+        "operationId": "GetArticle",
+        "parameters": [
+          {
+            "name": "articleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "fromStore",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonalArticleModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonalArticleModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonalArticleModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AuditPointModel": {
+        "required": ["at", "by"],
+        "type": "object",
+        "properties": {
+          "by": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "StoreInfo": {
+        "required": ["storeId", "teamId"],
+        "type": "object",
+        "properties": {
+          "teamId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "storeId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CompanyArticleStoreInfoModel": {
+        "required": ["storeId", "teamId"],
+        "type": "object",
+        "properties": {
+          "storeId": {
+            "type": "string"
+          },
+          "teamId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CompanyArticleInformationsModel": {
+        "required": [
+          "created",
+          "displayName",
+          "isDeployed",
+          "isHome",
+          "lastModified"
+        ],
+        "type": "object",
+        "properties": {
+          "displayName": {
+            "type": "string"
+          },
+          "isDeployed": {
+            "type": "boolean"
+          },
+          "isHome": {
+            "type": "boolean"
+          },
+          "created": {
+            "$ref": "#/components/schemas/AuditPointModel"
+          },
+          "lastModified": {
+            "$ref": "#/components/schemas/AuditPointModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CompanyArticleModel": {
+        "required": ["storeInfo", "id", "infos"],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "infos": {
+            "$ref": "#/components/schemas/CompanyArticleInformationsModel"
+          },
+          "storeInfo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CompanyArticleStoreInfoModel"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "Configuration": {
+        "required": [
+          "appName",
+          "appPath",
+          "clientId",
+          "iconId",
+          "id",
+          "primaryColor"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "clientId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "iconId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "appPath": {
+            "type": "string"
+          },
+          "appName": {
+            "type": "string"
+          },
+          "primaryColor": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Contributor": {
+        "type": "object",
+        "properties": {
+          "memberId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "type": {
+            "$ref": "#/components/schemas/MemberType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MemberType": {
+        "enum": ["user", "group"],
+        "type": "string"
+      },
+      "PersonalArticleInformationsModel": {
+        "required": ["created", "displayName", "lastModified"],
+        "type": "object",
+        "properties": {
+          "displayName": {
+            "type": "string"
+          },
+          "created": {
+            "$ref": "#/components/schemas/AuditPointModel"
+          },
+          "lastModified": {
+            "$ref": "#/components/schemas/AuditPointModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PersonalArticleModel": {
+        "required": [
+          "id",
+          "infos",
+          "isEditable",
+          "isHome",
+          "isPersonal",
+          "widgets"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "isPersonal": {
+            "type": "boolean"
+          },
+          "isEditable": {
+            "type": "boolean"
+          },
+          "isHome": {
+            "type": "boolean"
+          },
+          "infos": {
+            "$ref": "#/components/schemas/PersonalArticleInformationsModel"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "oauth2": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://mozzauth.int.mozzaik365.net/connect/authorize",
+            "tokenUrl": "https://mozzauth.int.mozzaik365.net/connect/token",
+            "scopes": {
+              "modaLocalJoffrey": "Access to MozzAI API"
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "oauth2": []
+    }
+  ]
+}
